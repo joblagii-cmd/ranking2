@@ -4,4 +4,8 @@
     <loc>https://ranking2-two.vercel.app/sitemap1.xml</loc>
     <lastmod>2026-06-05</lastmod>
   </sitemap>
+  <sitemap>
+    <loc>https://ranking2-two.vercel.app/sitemap2.xml</loc>
+    <lastmod>2026-06-05</lastmod>
+  </sitemap>
 </sitemapindex>
