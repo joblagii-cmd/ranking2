@@ -13,8 +13,8 @@ export async function GET(req: NextRequest) {
 
   try {
     const res = await fetch(
-      `https://raw.githubusercontent.com/${owner}/${repo}/main/data/index-${countryCode}.json`,
-      { next: { revalidate: 60 } }
+      `https://raw.githubusercontent.com/${owner}/${repo}/main/data/index-${countryCode}.json?t=${Date.now()}`,
+      { cache: "no-store" }
     );
     if (!res.ok) return NextResponse.json({ jobs: [], total: 0, page, limit });
 
