@@ -107,7 +107,7 @@ export default async function JobPage({ params }: { params: Promise<{ slug: stri
                 <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 4 }}>Annual Salary</div>
                 <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 22, fontWeight: 700, color: "#a5b4fc" }}>{fmtSalary(job.salaryMin, job.salaryMax, job.currency)}</div>
               </div>
-              <button style={{ padding: "13px 32px", borderRadius: 12, border: "none", background: "linear-gradient(135deg, #6366f1, #4f46e5)", color: "white", fontSize: 15, fontWeight: 700, cursor: "pointer", boxShadow: "0 4px 20px rgba(99,102,241,0.35)", fontFamily: "'Space Grotesk', sans-serif" }}>Apply Now →</button>
+              <a href="https://remotejob09.job4intern.com/pages/job-application" target="_blank" rel="noopener noreferrer" style={{ padding: "13px 32px", borderRadius: 12, border: "none", background: "linear-gradient(135deg, #6366f1, #4f46e5)", color: "white", fontSize: 15, fontWeight: 700, cursor: "pointer", boxShadow: "0 4px 20px rgba(99,102,241,0.35)", fontFamily: "'Space Grotesk', sans-serif", textDecoration: "none", display: "inline-block" }}>Apply Now →</a>
             </div>
           </div>
 
