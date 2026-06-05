@@ -3,7 +3,6 @@ import { TOP_COUNTRIES, JOB_TITLES, SENIORITY_LEVELS, EMPLOYMENT_TYPES, SALARY_R
 
 export const maxDuration = 60;
 
-function rand<T>(arr: T[]): T { return arr[Math.floor(Math.random() * arr.length)] as T; }
 function randInt(min: number, max: number) { return Math.floor(Math.random() * (max - min + 1)) + min; }
 function slugify(s: string) { return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
 function getDomain(title: string) {
@@ -28,20 +27,21 @@ function fmtSalary(min: number, max: number, currency: string) {
 async function saveFileToGitHub(path: string, content: string, token: string, owner: string, repo: string) {
   const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
   const b64 = Buffer.from(content).toString("base64");
-
-  // Check if file exists to get SHA for update
   let sha: string | undefined;
   try {
     const check = await fetch(apiUrl, { headers: { Authorization: `Bearer ${token}`, "User-Agent": "JobPortal" } });
     if (check.ok) { const d = await check.json(); sha = d.sha; }
   } catch {}
-
   const res = await fetch(apiUrl, {
     method: "PUT",
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", "User-Agent": "JobPortal" },
-    body: JSON.stringify({ message: `Add job: ${path}`, content: b64, ...(sha && { sha }) }),
+    body: JSON.stringify({ message: `Publish jobs: ${path}`, content: b64, ...(sha && { sha }) }),
   });
-  return res.ok;
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(`GitHub save failed: ${JSON.stringify(err)}`);
+  }
+  return true;
 }
 
 export async function POST(req: NextRequest) {
@@ -51,42 +51,44 @@ export async function POST(req: NextRequest) {
     const owner = process.env.GITHUB_OWNER;
     const repo = process.env.GITHUB_REPO;
 
-    if (!token || !owner || !repo) return NextResponse.json({ error: "GitHub env vars not set. Add GITHUB_TOKEN, GITHUB_OWNER, GITHUB_REPO in Vercel." }, { status: 500 });
-    if (!countryCode || !companies?.length) return NextResponse.json({ error: "Missing countryCode or companies" }, { status: 400 });
+    if (!token || !owner || !repo) {
+      return NextResponse.json({ error: "Missing env vars: GITHUB_TOKEN, GITHUB_OWNER, GITHUB_REPO" }, { status: 500 });
+    }
+    if (!countryCode || !companies?.length) {
+      return NextResponse.json({ error: "Missing countryCode or companies" }, { status: 400 });
+    }
 
     const country = TOP_COUNTRIES.find(c => c.code === countryCode);
     if (!country) return NextResponse.json({ error: "Invalid country" }, { status: 400 });
 
     const TOTAL = 5000;
     const publishedAt = new Date();
-    const validThrough = new Date(publishedAt); validThrough.setFullYear(validThrough.getFullYear() + 1);
+    const validThrough = new Date(publishedAt);
+    validThrough.setFullYear(validThrough.getFullYear() + 1);
     const currency = country.currency;
+    const jobs: Record<string, unknown>[] = [];
 
-    // Generate ALL jobs first
-    const jobs = [];
     for (let i = 0; i < TOTAL; i++) {
       const isRemote = i < TOTAL / 2;
-      const baseTitle = rand(JOB_TITLES);
-      const seniority = rand(SENIORITY_LEVELS);
+      const baseTitle = JOB_TITLES[Math.floor(Math.random() * JOB_TITLES.length)];
+      const seniority = SENIORITY_LEVELS[Math.floor(Math.random() * SENIORITY_LEVELS.length)];
       const title = `${seniority} ${baseTitle}`;
       const company: string = companies[Math.floor(Math.random() * companies.length)];
-      const city = isRemote ? "Remote" : rand(country.cities);
+      const city = isRemote ? "Remote" : country.cities[Math.floor(Math.random() * country.cities.length)];
       const domain = getDomain(baseTitle);
       const skills = pickSkills(domain);
-      const empType = rand(EMPLOYMENT_TYPES);
-      const [sMin, sMax] = rand(SALARY_RANGES[countryCode] || SALARY_RANGES["US"]);
+      const empType = EMPLOYMENT_TYPES[Math.floor(Math.random() * EMPLOYMENT_TYPES.length)];
+      const salaryRanges = SALARY_RANGES[countryCode] || SALARY_RANGES["US"];
+      const [sMin, sMax] = salaryRanges[Math.floor(Math.random() * salaryRanges.length)];
       const salary = fmtSalary(sMin, sMax, currency);
       const exp = randInt(1, 10);
       const templates: string[] = JOB_DESCRIPTIONS_TEMPLATES;
-      const templateStr: string = templates[Math.floor(Math.random() * templates.length)];
+      const tmpl = templates[Math.floor(Math.random() * templates.length)];
       const remotePerk = isRemote ? "100% remote — work from anywhere" : "Hybrid work options available";
-      const description = templateStr
-        .split("{title}").join(title)
-        .split("{company}").join(company)
-        .split("{domain}").join(domain)
-        .split("{skills}").join(skills.slice(0, 4).join(", "))
-        .split("{salary}").join(salary)
-        .split("{experience}").join(String(exp))
+      const description = tmpl
+        .split("{title}").join(title).split("{company}").join(company)
+        .split("{domain}").join(domain).split("{skills}").join(skills.slice(0, 4).join(", "))
+        .split("{salary}").join(salary).split("{experience}").join(String(exp))
         .split("{remote_perk}").join(remotePerk);
 
       const id = `${countryCode.toLowerCase()}-${i + 1}-${Date.now()}`;
@@ -96,7 +98,8 @@ export async function POST(req: NextRequest) {
         "@context": "https://schema.org", "@type": "JobPosting",
         title, description,
         identifier: { "@type": "PropertyValue", name: company, value: id },
-        datePosted: publishedAt.toISOString(), validThrough: validThrough.toISOString(),
+        datePosted: publishedAt.toISOString(),
+        validThrough: validThrough.toISOString(),
         employmentType: empType,
         hiringOrganization: { "@type": "Organization", name: company, sameAs: `https://www.${slugify(company)}.com` },
         jobLocation: isRemote
@@ -109,30 +112,56 @@ export async function POST(req: NextRequest) {
       jobs.push({ id, slug, title, company, countryCode, country: country.name, city, isRemote, employmentType: empType, seniority, salaryMin: sMin, salaryMax: sMax, currency, description, skills, publishedAt: publishedAt.toISOString(), validThrough: validThrough.toISOString(), schema });
     }
 
-    // Save to GitHub in batches of 10 parallel
-    const BATCH = 10;
-    let saved = 0;
-    for (let i = 0; i < jobs.length; i += BATCH) {
-      const batch = jobs.slice(i, i + BATCH);
-      await Promise.all(batch.map(job =>
-        saveFileToGitHub(`data/jobs/${job.slug}.json`, JSON.stringify(job, null, 2), token, owner, repo)
-      ));
-      saved += batch.length;
+    // Save ALL 5000 jobs in ONE file per batch (split into 500-job chunks to stay under GitHub 1MB limit)
+    const CHUNK_SIZE = 500;
+    const timestamp = Date.now();
+
+    for (let c = 0; c < jobs.length; c += CHUNK_SIZE) {
+      const chunk = jobs.slice(c, c + CHUNK_SIZE);
+      const chunkNum = Math.floor(c / CHUNK_SIZE);
+      await saveFileToGitHub(
+        `data/jobs-${countryCode}-${timestamp}-${chunkNum}.json`,
+        JSON.stringify(chunk, null, 0),
+        token, owner, repo
+      );
     }
 
-    // Save index file per country (slug list for listing page)
-    const existingIndex = await fetch(`https://api.github.com/repos/${owner}/${repo}/contents/data/index-${countryCode}.json`, { headers: { Authorization: `Bearer ${token}`, "User-Agent": "JobPortal" } });
-    let existingSlugs: string[] = [];
-    if (existingIndex.ok) {
-      const d = await existingIndex.json();
-      existingSlugs = JSON.parse(Buffer.from(d.content, "base64").toString());
-    }
-    const newSlugs = [...existingSlugs, ...jobs.map(j => ({ slug: j.slug, title: j.title, company: j.company, city: j.city, country: j.country, countryCode: j.countryCode, isRemote: j.isRemote, employmentType: j.employmentType, salaryMin: j.salaryMin, salaryMax: j.salaryMax, currency: j.currency, skills: j.skills, publishedAt: j.publishedAt }))];
-    await saveFileToGitHub(`data/index-${countryCode}.json`, JSON.stringify(newSlugs, null, 2), token, owner, repo);
+    // Save/update index file — append new job metadata (no description to keep small)
+    let existingJobs: object[] = [];
+    try {
+      const idxRes = await fetch(
+        `https://raw.githubusercontent.com/${owner}/${repo}/main/data/index-${countryCode}.json`,
+        { headers: { "Cache-Control": "no-cache" } }
+      );
+      if (idxRes.ok) existingJobs = await idxRes.json();
+    } catch {}
 
-    return NextResponse.json({ success: true, total: saved, remote: jobs.filter(j => j.isRemote).length, normal: jobs.filter(j => !j.isRemote).length, country: country.name });
+    const newMeta = jobs.map(j => ({
+      id: j.id, slug: j.slug, title: j.title, company: j.company,
+      city: j.city, country: j.country, countryCode: j.countryCode,
+      isRemote: j.isRemote, employmentType: j.employmentType,
+      salaryMin: j.salaryMin, salaryMax: j.salaryMax, currency: j.currency,
+      skills: j.skills, publishedAt: j.publishedAt,
+      // store which chunk file this job is in
+      chunkFile: `jobs-${countryCode}-${timestamp}-${Math.floor(jobs.indexOf(j) / CHUNK_SIZE)}.json`
+    }));
+
+    const allMeta = [...existingJobs, ...newMeta];
+    await saveFileToGitHub(
+      `data/index-${countryCode}.json`,
+      JSON.stringify(allMeta, null, 0),
+      token, owner, repo
+    );
+
+    return NextResponse.json({
+      success: true,
+      total: jobs.length,
+      remote: jobs.filter(j => j.isRemote).length,
+      normal: jobs.filter(j => !j.isRemote).length,
+      country: country.name,
+    });
   } catch (err) {
-    console.error(err);
-    return NextResponse.json({ error: "Failed to publish jobs" }, { status: 500 });
+    console.error("Publish error:", err);
+    return NextResponse.json({ error: String(err) }, { status: 500 });
   }
 }
