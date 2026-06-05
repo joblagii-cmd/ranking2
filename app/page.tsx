@@ -21,21 +21,14 @@ export default function Home() {
           5,000 unique jobs published on command.
         </p>
 
-        <div style={{ display: "flex", gap: 14, justifyContent: "center", flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: 14, justifyContent: "center" }}>
           <Link href="/jobs" style={{
-            padding: "14px 32px", borderRadius: 12, textDecoration: "none",
+            padding: "14px 36px", borderRadius: 12, textDecoration: "none",
             background: "linear-gradient(135deg, #6366f1, #4f46e5)",
             color: "white", fontWeight: 700, fontSize: 16,
             boxShadow: "0 4px 24px rgba(99,102,241,0.35)"
           }}>
-            Browse Jobs
-          </Link>
-          <Link href="/admin" style={{
-            padding: "14px 32px", borderRadius: 12, textDecoration: "none",
-            background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.12)",
-            color: "#e8e8f0", fontWeight: 600, fontSize: 16
-          }}>
-            Admin Panel
+            Browse Jobs →
           </Link>
         </div>
 
