@@ -1,0 +1,66 @@
+{
+  "id": "us-95-1780655798764",
+  "slug": "senior-e-commerce-manager-microsoft-95",
+  "title": "Senior E-commerce Manager",
+  "company": "Microsoft",
+  "countryCode": "US",
+  "country": "United States",
+  "city": "Remote",
+  "isRemote": true,
+  "employmentType": "TEMPORARY",
+  "seniority": "Senior",
+  "salaryMin": 120000,
+  "salaryMax": 160000,
+  "currency": "USD",
+  "description": "We are looking for a talented Senior E-commerce Manager to join our dynamic team at Microsoft. In this role, you will be responsible for designing, developing, and maintaining general solutions that drive business growth and innovation.\n\n**Key Responsibilities:**\n- Collaborate with cross-functional teams to define and implement new features\n- Write clean, maintainable, and well-documented code/work\n- Participate in code reviews and contribute to best practices\n- Identify and resolve performance bottlenecks and bugs\n- Mentor junior team members and share knowledge across the organization\n- Communicate effectively with stakeholders to understand business requirements\n\n**Requirements:**\n- 5 years of experience in a similar role\n- Strong proficiency in Project Management, Team Management, Analytical Thinking, Leadership\n- Excellent problem-solving and analytical skills\n- Bachelor's degree in a relevant field or equivalent practical experience\n- Strong communication and collaboration skills\n\n**What We Offer:**\n- Competitive salary of $120,000 – $160,000 per year\n- Comprehensive health, dental, and vision insurance\n- 100% remote — work from anywhere\n- Generous PTO and paid holidays\n- Learning and development budget\n- Collaborative and inclusive work environment",
+  "skills": [
+    "Project Management",
+    "Team Management",
+    "Analytical Thinking",
+    "Leadership",
+    "Communication"
+  ],
+  "publishedAt": "2026-06-05T10:36:38.713Z",
+  "validThrough": "2027-06-05T10:36:38.713Z",
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": "Senior E-commerce Manager",
+    "description": "We are looking for a talented Senior E-commerce Manager to join our dynamic team at Microsoft. In this role, you will be responsible for designing, developing, and maintaining general solutions that drive business growth and innovation.\n\n**Key Responsibilities:**\n- Collaborate with cross-functional teams to define and implement new features\n- Write clean, maintainable, and well-documented code/work\n- Participate in code reviews and contribute to best practices\n- Identify and resolve performance bottlenecks and bugs\n- Mentor junior team members and share knowledge across the organization\n- Communicate effectively with stakeholders to understand business requirements\n\n**Requirements:**\n- 5 years of experience in a similar role\n- Strong proficiency in Project Management, Team Management, Analytical Thinking, Leadership\n- Excellent problem-solving and analytical skills\n- Bachelor's degree in a relevant field or equivalent practical experience\n- Strong communication and collaboration skills\n\n**What We Offer:**\n- Competitive salary of $120,000 – $160,000 per year\n- Comprehensive health, dental, and vision insurance\n- 100% remote — work from anywhere\n- Generous PTO and paid holidays\n- Learning and development budget\n- Collaborative and inclusive work environment",
+    "identifier": {
+      "@type": "PropertyValue",
+      "name": "Microsoft",
+      "value": "us-95-1780655798764"
+    },
+    "datePosted": "2026-06-05T10:36:38.713Z",
+    "validThrough": "2027-06-05T10:36:38.713Z",
+    "employmentType": "TEMPORARY",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Microsoft",
+      "sameAs": "https://www.microsoft.com"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "US"
+      }
+    },
+    "applicantLocationRequirements": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "jobLocationType": "TELECOMMUTE",
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD",
+      "value": {
+        "@type": "QuantitativeValue",
+        "minValue": 120000,
+        "maxValue": 160000,
+        "unitText": "YEAR"
+      }
+    }
+  }
+}
