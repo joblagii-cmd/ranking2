@@ -1,0 +1,66 @@
+{
+  "id": "us-116-1780655798768",
+  "slug": "staff-electrical-engineer-microsoft-116",
+  "title": "Staff Electrical Engineer",
+  "company": "Microsoft",
+  "countryCode": "US",
+  "country": "United States",
+  "city": "Remote",
+  "isRemote": true,
+  "employmentType": "CONTRACTOR",
+  "seniority": "Staff",
+  "salaryMin": 120000,
+  "salaryMax": 160000,
+  "currency": "USD",
+  "description": "Join Microsoft as a Staff Electrical Engineer and be part of our mission to transform the industry. We're a team of driven professionals who love what we do and are committed to excellence.\n\n**The Opportunity:**\nWe're expanding our team and looking for a skilled Staff Electrical Engineer with strong expertise in tech. This role offers tremendous growth potential and the chance to work on challenging, meaningful projects.\n\n**Day-to-Day Responsibilities:**\n- Plan, prioritize, and execute tech projects to meet deadlines\n- Collaborate with team members across departments\n- Create detailed documentation and reports\n- Conduct research and analysis to support decision-making\n- Present findings and recommendations to leadership\n- Continuously improve processes and workflows\n\n**Must-Have Qualifications:**\n- Minimum 6 years of experience as a Staff Electrical Engineer or similar\n- In-depth knowledge of Node.js, Kubernetes, Communication, React\n- Strong attention to detail and organizational skills\n- Ability to manage multiple projects simultaneously\n- Team player with a proactive mindset\n\n**Perks & Benefits:**\n- Salary range: $120,000 – $160,000\n- 100% remote — work from anywhere\n- Health and wellness allowance\n- Professional development opportunities\n- Team offsites and company events\n- Modern office with great amenities",
+  "skills": [
+    "Node.js",
+    "Kubernetes",
+    "Communication",
+    "React",
+    "SQL"
+  ],
+  "publishedAt": "2026-06-05T10:36:38.713Z",
+  "validThrough": "2027-06-05T10:36:38.713Z",
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": "Staff Electrical Engineer",
+    "description": "Join Microsoft as a Staff Electrical Engineer and be part of our mission to transform the industry. We're a team of driven professionals who love what we do and are committed to excellence.\n\n**The Opportunity:**\nWe're expanding our team and looking for a skilled Staff Electrical Engineer with strong expertise in tech. This role offers tremendous growth potential and the chance to work on challenging, meaningful projects.\n\n**Day-to-Day Responsibilities:**\n- Plan, prioritize, and execute tech projects to meet deadlines\n- Collaborate with team members across departments\n- Create detailed documentation and reports\n- Conduct research and analysis to support decision-making\n- Present findings and recommendations to leadership\n- Continuously improve processes and workflows\n\n**Must-Have Qualifications:**\n- Minimum 6 years of experience as a Staff Electrical Engineer or similar\n- In-depth knowledge of Node.js, Kubernetes, Communication, React\n- Strong attention to detail and organizational skills\n- Ability to manage multiple projects simultaneously\n- Team player with a proactive mindset\n\n**Perks & Benefits:**\n- Salary range: $120,000 – $160,000\n- 100% remote — work from anywhere\n- Health and wellness allowance\n- Professional development opportunities\n- Team offsites and company events\n- Modern office with great amenities",
+    "identifier": {
+      "@type": "PropertyValue",
+      "name": "Microsoft",
+      "value": "us-116-1780655798768"
+    },
+    "datePosted": "2026-06-05T10:36:38.713Z",
+    "validThrough": "2027-06-05T10:36:38.713Z",
+    "employmentType": "CONTRACTOR",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Microsoft",
+      "sameAs": "https://www.microsoft.com"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "US"
+      }
+    },
+    "applicantLocationRequirements": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "jobLocationType": "TELECOMMUTE",
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD",
+      "value": {
+        "@type": "QuantitativeValue",
+        "minValue": 120000,
+        "maxValue": 160000,
+        "unitText": "YEAR"
+      }
+    }
+  }
+}
