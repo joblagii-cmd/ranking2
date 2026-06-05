@@ -55,7 +55,7 @@ export const SKILLS_BY_DOMAIN: Record<string, string[]> = {
   general: ["Communication", "Leadership", "Problem Solving", "Team Management", "Microsoft Office", "Project Management", "Stakeholder Management", "Analytical Thinking"],
 };
 
-export const JOB_DESCRIPTIONS_TEMPLATES = [
+export const JOB_DESCRIPTIONS_TEMPLATES: string[] = [
   `We are looking for a talented {title} to join our dynamic team at {company}. In this role, you will be responsible for designing, developing, and maintaining {domain} solutions that drive business growth and innovation.
 
 **Key Responsibilities:**
