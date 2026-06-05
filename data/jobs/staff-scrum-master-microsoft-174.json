@@ -1,0 +1,66 @@
+{
+  "id": "us-174-1780655798781",
+  "slug": "staff-scrum-master-microsoft-174",
+  "title": "Staff Scrum Master",
+  "company": "Microsoft",
+  "countryCode": "US",
+  "country": "United States",
+  "city": "Remote",
+  "isRemote": true,
+  "employmentType": "FULL_TIME",
+  "seniority": "Staff",
+  "salaryMin": 50000,
+  "salaryMax": 80000,
+  "currency": "USD",
+  "description": "Microsoft is seeking a Staff Scrum Master who is passionate about building innovative solutions. This is an exciting opportunity to make a real impact in a fast-growing organization.\n\n**About the Role:**\nAs a Staff Scrum Master, you will play a key role in shaping the future of our general capabilities. You will work closely with our product, engineering, and business teams to deliver high-quality solutions.\n\n**What You'll Do:**\n- Lead and execute general initiatives from conception to delivery\n- Work with stakeholders across the business to identify opportunities\n- Develop and implement strategies that align with company goals\n- Analyze data and metrics to measure impact and drive improvements\n- Stay up-to-date with industry trends and best practices\n- Build and maintain strong relationships with internal and external partners\n\n**Your Background:**\n- 4+ years of relevant experience\n- Expertise in Stakeholder Management, Leadership, Analytical Thinking, Communication\n- Proven track record of delivering results in a fast-paced environment\n- Strong analytical and strategic thinking skills\n- Excellent written and verbal communication abilities\n\n**Compensation & Benefits:**\n- Annual salary: $50,000 – $80,000\n- 100% remote — work from anywhere\n- Stock options / performance bonus\n- Premium health insurance\n- 401k/pension with company match\n- Flexible working hours",
+  "skills": [
+    "Stakeholder Management",
+    "Leadership",
+    "Analytical Thinking",
+    "Communication",
+    "Project Management"
+  ],
+  "publishedAt": "2026-06-05T10:36:38.713Z",
+  "validThrough": "2027-06-05T10:36:38.713Z",
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": "Staff Scrum Master",
+    "description": "Microsoft is seeking a Staff Scrum Master who is passionate about building innovative solutions. This is an exciting opportunity to make a real impact in a fast-growing organization.\n\n**About the Role:**\nAs a Staff Scrum Master, you will play a key role in shaping the future of our general capabilities. You will work closely with our product, engineering, and business teams to deliver high-quality solutions.\n\n**What You'll Do:**\n- Lead and execute general initiatives from conception to delivery\n- Work with stakeholders across the business to identify opportunities\n- Develop and implement strategies that align with company goals\n- Analyze data and metrics to measure impact and drive improvements\n- Stay up-to-date with industry trends and best practices\n- Build and maintain strong relationships with internal and external partners\n\n**Your Background:**\n- 4+ years of relevant experience\n- Expertise in Stakeholder Management, Leadership, Analytical Thinking, Communication\n- Proven track record of delivering results in a fast-paced environment\n- Strong analytical and strategic thinking skills\n- Excellent written and verbal communication abilities\n\n**Compensation & Benefits:**\n- Annual salary: $50,000 – $80,000\n- 100% remote — work from anywhere\n- Stock options / performance bonus\n- Premium health insurance\n- 401k/pension with company match\n- Flexible working hours",
+    "identifier": {
+      "@type": "PropertyValue",
+      "name": "Microsoft",
+      "value": "us-174-1780655798781"
+    },
+    "datePosted": "2026-06-05T10:36:38.713Z",
+    "validThrough": "2027-06-05T10:36:38.713Z",
+    "employmentType": "FULL_TIME",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Microsoft",
+      "sameAs": "https://www.microsoft.com"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "US"
+      }
+    },
+    "applicantLocationRequirements": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "jobLocationType": "TELECOMMUTE",
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD",
+      "value": {
+        "@type": "QuantitativeValue",
+        "minValue": 50000,
+        "maxValue": 80000,
+        "unitText": "YEAR"
+      }
+    }
+  }
+}
