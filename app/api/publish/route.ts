@@ -153,12 +153,63 @@ export async function POST(req: NextRequest) {
       token, owner, repo
     );
 
+    // ── Sitemap generation ──────────────────────────────────────────
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://ranking2-two.vercel.app";
+
+    // Get existing sitemap registry
+    let sitemapRegistry: { file: string; publishedAt: string; count: number }[] = [];
+    try {
+      const regRes = await fetch(
+        `https://raw.githubusercontent.com/${owner}/${repo}/main/data/sitemap-registry.json`,
+        { headers: { "Cache-Control": "no-cache" } }
+      );
+      if (regRes.ok) sitemapRegistry = await regRes.json();
+    } catch {}
+
+    // New sitemap number = next in sequence
+    const sitemapNum = sitemapRegistry.length + 1;
+    const sitemapFile = `sitemap${sitemapNum}.xml`;
+
+    // Build sitemap XML for this batch of 5000 jobs
+    const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${jobs.map(j => `  <url>
+    <loc>${siteUrl}/jobs/${j.slug}</loc>
+    <lastmod>${publishedAt.toISOString().split("T")[0]}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>`).join("\n")}
+</urlset>`;
+
+    await saveFileToGitHub(`public/${sitemapFile}`, sitemapXml, token, owner, repo);
+
+    // Update registry
+    sitemapRegistry.push({ file: sitemapFile, publishedAt: publishedAt.toISOString(), count: jobs.length });
+    await saveFileToGitHub(
+      `data/sitemap-registry.json`,
+      JSON.stringify(sitemapRegistry, null, 2),
+      token, owner, repo
+    );
+
+    // Rebuild sitemap index (sitemap.xml) listing all sitemaps
+    const sitemapIndexXml = `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${sitemapRegistry.map(s => `  <sitemap>
+    <loc>${siteUrl}/${s.file}</loc>
+    <lastmod>${new Date(s.publishedAt).toISOString().split("T")[0]}</lastmod>
+  </sitemap>`).join("\n")}
+</sitemapindex>`;
+
+    await saveFileToGitHub(`public/sitemap.xml`, sitemapIndexXml, token, owner, repo);
+    // ────────────────────────────────────────────────────────────────
+
     return NextResponse.json({
       success: true,
       total: jobs.length,
       remote: jobs.filter(j => j.isRemote).length,
       normal: jobs.filter(j => !j.isRemote).length,
       country: country.name,
+      sitemap: sitemapFile,
     });
   } catch (err) {
     console.error("Publish error:", err);
