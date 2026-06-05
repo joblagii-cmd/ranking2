@@ -1,0 +1,66 @@
+{
+  "id": "us-421-1780655798828",
+  "slug": "mid-level-marketing-manager-microsoft-421",
+  "title": "Mid-Level Marketing Manager",
+  "company": "Microsoft",
+  "countryCode": "US",
+  "country": "United States",
+  "city": "Remote",
+  "isRemote": true,
+  "employmentType": "INTERN",
+  "seniority": "Mid-Level",
+  "salaryMin": 200000,
+  "salaryMax": 280000,
+  "currency": "USD",
+  "description": "Microsoft is seeking a Mid-Level Marketing Manager who is passionate about building innovative solutions. This is an exciting opportunity to make a real impact in a fast-growing organization.\n\n**About the Role:**\nAs a Mid-Level Marketing Manager, you will play a key role in shaping the future of our marketing capabilities. You will work closely with our product, engineering, and business teams to deliver high-quality solutions.\n\n**What You'll Do:**\n- Lead and execute marketing initiatives from conception to delivery\n- Work with stakeholders across the business to identify opportunities\n- Develop and implement strategies that align with company goals\n- Analyze data and metrics to measure impact and drive improvements\n- Stay up-to-date with industry trends and best practices\n- Build and maintain strong relationships with internal and external partners\n\n**Your Background:**\n- 8+ years of relevant experience\n- Expertise in Facebook Ads, Google Ads, Content Strategy, Salesforce\n- Proven track record of delivering results in a fast-paced environment\n- Strong analytical and strategic thinking skills\n- Excellent written and verbal communication abilities\n\n**Compensation & Benefits:**\n- Annual salary: $200,000 – $280,000\n- 100% remote — work from anywhere\n- Stock options / performance bonus\n- Premium health insurance\n- 401k/pension with company match\n- Flexible working hours",
+  "skills": [
+    "Facebook Ads",
+    "Google Ads",
+    "Content Strategy",
+    "Salesforce",
+    "Microsoft Office"
+  ],
+  "publishedAt": "2026-06-05T10:36:38.713Z",
+  "validThrough": "2027-06-05T10:36:38.713Z",
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": "Mid-Level Marketing Manager",
+    "description": "Microsoft is seeking a Mid-Level Marketing Manager who is passionate about building innovative solutions. This is an exciting opportunity to make a real impact in a fast-growing organization.\n\n**About the Role:**\nAs a Mid-Level Marketing Manager, you will play a key role in shaping the future of our marketing capabilities. You will work closely with our product, engineering, and business teams to deliver high-quality solutions.\n\n**What You'll Do:**\n- Lead and execute marketing initiatives from conception to delivery\n- Work with stakeholders across the business to identify opportunities\n- Develop and implement strategies that align with company goals\n- Analyze data and metrics to measure impact and drive improvements\n- Stay up-to-date with industry trends and best practices\n- Build and maintain strong relationships with internal and external partners\n\n**Your Background:**\n- 8+ years of relevant experience\n- Expertise in Facebook Ads, Google Ads, Content Strategy, Salesforce\n- Proven track record of delivering results in a fast-paced environment\n- Strong analytical and strategic thinking skills\n- Excellent written and verbal communication abilities\n\n**Compensation & Benefits:**\n- Annual salary: $200,000 – $280,000\n- 100% remote — work from anywhere\n- Stock options / performance bonus\n- Premium health insurance\n- 401k/pension with company match\n- Flexible working hours",
+    "identifier": {
+      "@type": "PropertyValue",
+      "name": "Microsoft",
+      "value": "us-421-1780655798828"
+    },
+    "datePosted": "2026-06-05T10:36:38.713Z",
+    "validThrough": "2027-06-05T10:36:38.713Z",
+    "employmentType": "INTERN",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Microsoft",
+      "sameAs": "https://www.microsoft.com"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "US"
+      }
+    },
+    "applicantLocationRequirements": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "jobLocationType": "TELECOMMUTE",
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD",
+      "value": {
+        "@type": "QuantitativeValue",
+        "minValue": 200000,
+        "maxValue": 280000,
+        "unitText": "YEAR"
+      }
+    }
+  }
+}
