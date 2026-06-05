@@ -1,0 +1,66 @@
+{
+  "id": "us-138-1780655798772",
+  "slug": "associate-quality-assurance-engineer-microsoft-138",
+  "title": "Associate Quality Assurance Engineer",
+  "company": "Microsoft",
+  "countryCode": "US",
+  "country": "United States",
+  "city": "Remote",
+  "isRemote": true,
+  "employmentType": "INTERN",
+  "seniority": "Associate",
+  "salaryMin": 50000,
+  "salaryMax": 80000,
+  "currency": "USD",
+  "description": "Join Microsoft as a Associate Quality Assurance Engineer and be part of our mission to transform the industry. We're a team of driven professionals who love what we do and are committed to excellence.\n\n**The Opportunity:**\nWe're expanding our team and looking for a skilled Associate Quality Assurance Engineer with strong expertise in tech. This role offers tremendous growth potential and the chance to work on challenging, meaningful projects.\n\n**Day-to-Day Responsibilities:**\n- Plan, prioritize, and execute tech projects to meet deadlines\n- Collaborate with team members across departments\n- Create detailed documentation and reports\n- Conduct research and analysis to support decision-making\n- Present findings and recommendations to leadership\n- Continuously improve processes and workflows\n\n**Must-Have Qualifications:**\n- Minimum 9 years of experience as a Associate Quality Assurance Engineer or similar\n- In-depth knowledge of CI/CD, Microsoft Office, JavaScript, Team Management\n- Strong attention to detail and organizational skills\n- Ability to manage multiple projects simultaneously\n- Team player with a proactive mindset\n\n**Perks & Benefits:**\n- Salary range: $50,000 – $80,000\n- 100% remote — work from anywhere\n- Health and wellness allowance\n- Professional development opportunities\n- Team offsites and company events\n- Modern office with great amenities",
+  "skills": [
+    "CI/CD",
+    "Microsoft Office",
+    "JavaScript",
+    "Team Management",
+    "TypeScript"
+  ],
+  "publishedAt": "2026-06-05T10:36:38.713Z",
+  "validThrough": "2027-06-05T10:36:38.713Z",
+  "schema": {
+    "@context": "https://schema.org",
+    "@type": "JobPosting",
+    "title": "Associate Quality Assurance Engineer",
+    "description": "Join Microsoft as a Associate Quality Assurance Engineer and be part of our mission to transform the industry. We're a team of driven professionals who love what we do and are committed to excellence.\n\n**The Opportunity:**\nWe're expanding our team and looking for a skilled Associate Quality Assurance Engineer with strong expertise in tech. This role offers tremendous growth potential and the chance to work on challenging, meaningful projects.\n\n**Day-to-Day Responsibilities:**\n- Plan, prioritize, and execute tech projects to meet deadlines\n- Collaborate with team members across departments\n- Create detailed documentation and reports\n- Conduct research and analysis to support decision-making\n- Present findings and recommendations to leadership\n- Continuously improve processes and workflows\n\n**Must-Have Qualifications:**\n- Minimum 9 years of experience as a Associate Quality Assurance Engineer or similar\n- In-depth knowledge of CI/CD, Microsoft Office, JavaScript, Team Management\n- Strong attention to detail and organizational skills\n- Ability to manage multiple projects simultaneously\n- Team player with a proactive mindset\n\n**Perks & Benefits:**\n- Salary range: $50,000 – $80,000\n- 100% remote — work from anywhere\n- Health and wellness allowance\n- Professional development opportunities\n- Team offsites and company events\n- Modern office with great amenities",
+    "identifier": {
+      "@type": "PropertyValue",
+      "name": "Microsoft",
+      "value": "us-138-1780655798772"
+    },
+    "datePosted": "2026-06-05T10:36:38.713Z",
+    "validThrough": "2027-06-05T10:36:38.713Z",
+    "employmentType": "INTERN",
+    "hiringOrganization": {
+      "@type": "Organization",
+      "name": "Microsoft",
+      "sameAs": "https://www.microsoft.com"
+    },
+    "jobLocation": {
+      "@type": "Place",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "US"
+      }
+    },
+    "applicantLocationRequirements": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "jobLocationType": "TELECOMMUTE",
+    "baseSalary": {
+      "@type": "MonetaryAmount",
+      "currency": "USD",
+      "value": {
+        "@type": "QuantitativeValue",
+        "minValue": 50000,
+        "maxValue": 80000,
+        "unitText": "YEAR"
+      }
+    }
+  }
+}
