@@ -130,8 +130,8 @@ export async function POST(req: NextRequest) {
     let existingJobs: object[] = [];
     try {
       const idxRes = await fetch(
-        `https://raw.githubusercontent.com/${owner}/${repo}/main/data/index-${countryCode}.json`,
-        { headers: { "Cache-Control": "no-cache" } }
+        `https://raw.githubusercontent.com/${owner}/${repo}/main/data/index-${countryCode}.json?t=${Date.now()}`,
+        { cache: "no-store" }
       );
       if (idxRes.ok) existingJobs = await idxRes.json();
     } catch {}
@@ -160,8 +160,8 @@ export async function POST(req: NextRequest) {
     let sitemapRegistry: { file: string; publishedAt: string; count: number }[] = [];
     try {
       const regRes = await fetch(
-        `https://raw.githubusercontent.com/${owner}/${repo}/main/data/sitemap-registry.json`,
-        { headers: { "Cache-Control": "no-cache" } }
+        `https://raw.githubusercontent.com/${owner}/${repo}/main/data/sitemap-registry.json?t=${Date.now()}`,
+        { cache: "no-store" }
       );
       if (regRes.ok) sitemapRegistry = await regRes.json();
     } catch {}
