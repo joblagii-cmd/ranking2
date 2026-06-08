@@ -3,7 +3,6 @@
 import { useState, useEffect, useCallback } from "react";
 
 const COUNTRIES = [
-  // Major markets
   { code: "US", name: "United States", flag: "🇺🇸" },
   { code: "CA", name: "Canada", flag: "🇨🇦" },
   { code: "GB", name: "United Kingdom", flag: "🇬🇧" },
@@ -14,7 +13,6 @@ const COUNTRIES = [
   { code: "AE", name: "UAE", flag: "🇦🇪" },
   { code: "SG", name: "Singapore", flag: "🇸🇬" },
   { code: "NZ", name: "New Zealand", flag: "🇳🇿" },
-  // Europe
   { code: "AT", name: "Austria", flag: "🇦🇹" },
   { code: "BE", name: "Belgium", flag: "🇧🇪" },
   { code: "CH", name: "Switzerland", flag: "🇨🇭" },
@@ -49,7 +47,13 @@ const COUNTRIES = [
   { code: "AL", name: "Albania", flag: "🇦🇱" },
   { code: "BA", name: "Bosnia and Herzegovina", flag: "🇧🇦" },
   { code: "ME", name: "Montenegro", flag: "🇲🇪" },
-  // Asia
+  { code: "MD", name: "Moldova", flag: "🇲🇩" },
+  { code: "BY", name: "Belarus", flag: "🇧🇾" },
+  { code: "XK", name: "Kosovo", flag: "🇽🇰" },
+  { code: "LI", name: "Liechtenstein", flag: "🇱🇮" },
+  { code: "SM", name: "San Marino", flag: "🇸🇲" },
+  { code: "AD", name: "Andorra", flag: "🇦🇩" },
+  { code: "MC", name: "Monaco", flag: "🇲🇨" },
   { code: "JP", name: "Japan", flag: "🇯🇵" },
   { code: "CN", name: "China", flag: "🇨🇳" },
   { code: "KR", name: "South Korea", flag: "🇰🇷" },
@@ -83,7 +87,17 @@ const COUNTRIES = [
   { code: "IQ", name: "Iraq", flag: "🇮🇶" },
   { code: "IR", name: "Iran", flag: "🇮🇷" },
   { code: "AF", name: "Afghanistan", flag: "🇦🇫" },
-  // Americas
+  { code: "LA", name: "Laos", flag: "🇱🇦" },
+  { code: "BT", name: "Bhutan", flag: "🇧🇹" },
+  { code: "MV", name: "Maldives", flag: "🇲🇻" },
+  { code: "TL", name: "Timor-Leste", flag: "🇹🇱" },
+  { code: "BN", name: "Brunei", flag: "🇧🇳" },
+  { code: "TJ", name: "Tajikistan", flag: "🇹🇯" },
+  { code: "TM", name: "Turkmenistan", flag: "🇹🇲" },
+  { code: "KG", name: "Kyrgyzstan", flag: "🇰🇬" },
+  { code: "SY", name: "Syria", flag: "🇸🇾" },
+  { code: "YE", name: "Yemen", flag: "🇾🇪" },
+  { code: "PS", name: "Palestine", flag: "🇵🇸" },
   { code: "BR", name: "Brazil", flag: "🇧🇷" },
   { code: "MX", name: "Mexico", flag: "🇲🇽" },
   { code: "AR", name: "Argentina", flag: "🇦🇷" },
@@ -105,7 +119,18 @@ const COUNTRIES = [
   { code: "DO", name: "Dominican Republic", flag: "🇩🇴" },
   { code: "JM", name: "Jamaica", flag: "🇯🇲" },
   { code: "TT", name: "Trinidad and Tobago", flag: "🇹🇹" },
-  // Africa
+  { code: "GY", name: "Guyana", flag: "🇬🇾" },
+  { code: "SR", name: "Suriname", flag: "🇸🇷" },
+  { code: "BZ", name: "Belize", flag: "🇧🇿" },
+  { code: "HT", name: "Haiti", flag: "🇭🇹" },
+  { code: "BB", name: "Barbados", flag: "🇧🇧" },
+  { code: "LC", name: "Saint Lucia", flag: "🇱🇨" },
+  { code: "VC", name: "Saint Vincent and the Grenadines", flag: "🇻🇨" },
+  { code: "GD", name: "Grenada", flag: "🇬🇩" },
+  { code: "AG", name: "Antigua and Barbuda", flag: "🇦🇬" },
+  { code: "DM", name: "Dominica", flag: "🇩🇲" },
+  { code: "KN", name: "Saint Kitts and Nevis", flag: "🇰🇳" },
+  { code: "BS", name: "Bahamas", flag: "🇧🇸" },
   { code: "NG", name: "Nigeria", flag: "🇳🇬" },
   { code: "ZA", name: "South Africa", flag: "🇿🇦" },
   { code: "EG", name: "Egypt", flag: "🇪🇬" },
@@ -127,9 +152,51 @@ const COUNTRIES = [
   { code: "MZ", name: "Mozambique", flag: "🇲🇿" },
   { code: "MG", name: "Madagascar", flag: "🇲🇬" },
   { code: "RW", name: "Rwanda", flag: "🇷🇼" },
-  // Oceania
+  { code: "LY", name: "Libya", flag: "🇱🇾" },
+  { code: "SO", name: "Somalia", flag: "🇸🇴" },
+  { code: "CD", name: "DR Congo", flag: "🇨🇩" },
+  { code: "CG", name: "Republic of Congo", flag: "🇨🇬" },
+  { code: "GN", name: "Guinea", flag: "🇬🇳" },
+  { code: "ML", name: "Mali", flag: "🇲🇱" },
+  { code: "BF", name: "Burkina Faso", flag: "🇧🇫" },
+  { code: "NE", name: "Niger", flag: "🇳🇪" },
+  { code: "TD", name: "Chad", flag: "🇹🇩" },
+  { code: "CF", name: "Central African Republic", flag: "🇨🇫" },
+  { code: "SS", name: "South Sudan", flag: "🇸🇸" },
+  { code: "ER", name: "Eritrea", flag: "🇪🇷" },
+  { code: "DJ", name: "Djibouti", flag: "🇩🇯" },
+  { code: "MR", name: "Mauritania", flag: "🇲🇷" },
+  { code: "GM", name: "Gambia", flag: "🇬🇲" },
+  { code: "GW", name: "Guinea-Bissau", flag: "🇬🇼" },
+  { code: "SL", name: "Sierra Leone", flag: "🇸🇱" },
+  { code: "LR", name: "Liberia", flag: "🇱🇷" },
+  { code: "TG", name: "Togo", flag: "🇹🇬" },
+  { code: "BJ", name: "Benin", flag: "🇧🇯" },
+  { code: "GQ", name: "Equatorial Guinea", flag: "🇬🇶" },
+  { code: "GA", name: "Gabon", flag: "🇬🇦" },
+  { code: "ST", name: "Sao Tome and Principe", flag: "🇸🇹" },
+  { code: "CV", name: "Cape Verde", flag: "🇨🇻" },
+  { code: "KM", name: "Comoros", flag: "🇰🇲" },
+  { code: "SC", name: "Seychelles", flag: "🇸🇨" },
+  { code: "MU", name: "Mauritius", flag: "🇲🇺" },
+  { code: "BI", name: "Burundi", flag: "🇧🇮" },
+  { code: "MW", name: "Malawi", flag: "🇲🇼" },
+  { code: "NA", name: "Namibia", flag: "🇳🇦" },
+  { code: "BW", name: "Botswana", flag: "🇧🇼" },
+  { code: "SZ", name: "Eswatini", flag: "🇸🇿" },
+  { code: "LS", name: "Lesotho", flag: "🇱🇸" },
   { code: "FJ", name: "Fiji", flag: "🇫🇯" },
   { code: "PG", name: "Papua New Guinea", flag: "🇵🇬" },
+  { code: "WS", name: "Samoa", flag: "🇼🇸" },
+  { code: "TO", name: "Tonga", flag: "🇹🇴" },
+  { code: "VU", name: "Vanuatu", flag: "🇻🇺" },
+  { code: "SB", name: "Solomon Islands", flag: "🇸🇧" },
+  { code: "KI", name: "Kiribati", flag: "🇰🇮" },
+  { code: "FM", name: "Micronesia", flag: "🇫🇲" },
+  { code: "MH", name: "Marshall Islands", flag: "🇲🇭" },
+  { code: "PW", name: "Palau", flag: "🇵🇼" },
+  { code: "NR", name: "Nauru", flag: "🇳🇷" },
+  { code: "TV", name: "Tuvalu", flag: "🇹🇻" },
 ];
 
 interface Job {
@@ -156,6 +223,8 @@ export default function JobsPage() {
   const [selectedCountry, setSelectedCountry] = useState("US");
   const [jobType, setJobType] = useState<"" | "remote" | "normal">("");
   const [loading, setLoading] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [countrySearch, setCountrySearch] = useState("");
   const LIMIT = 20;
 
   const fetchJobs = useCallback(async () => {
@@ -181,6 +250,13 @@ export default function JobsPage() {
       ? `₹${(min / 100000).toFixed(0)}L – ₹${(max / 100000).toFixed(0)}L`
       : `${new Intl.NumberFormat("en-US", { style: "currency", currency: cur, maximumFractionDigits: 0 }).format(min)} – ${new Intl.NumberFormat("en-US", { style: "currency", currency: cur, maximumFractionDigits: 0 }).format(max)}`;
 
+  const filteredCountries = COUNTRIES.filter(c =>
+    c.name.toLowerCase().includes(countrySearch.toLowerCase()) ||
+    c.code.toLowerCase().includes(countrySearch.toLowerCase())
+  );
+
+  const selectedC = COUNTRIES.find(c => c.code === selectedCountry);
+
   return (
     <div style={{ minHeight: "100vh", background: "#0a0a0f", color: "#e8e8f0", fontFamily: "'DM Sans', sans-serif" }}>
       <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -202,14 +278,74 @@ export default function JobsPage() {
         </div>
 
         {/* Filters */}
-        <div style={{ display: "flex", gap: 10, marginBottom: 28, flexWrap: "wrap" }}>
+        <div style={{ display: "flex", gap: 10, marginBottom: 28, flexWrap: "wrap", alignItems: "center" }}>
+
+          {/* Searchable Country Dropdown */}
           <div style={{ position: "relative" }}>
-            <select value={selectedCountry} onChange={e => setSelectedCountry(e.target.value)}
-              style={{ padding: "10px 36px 10px 14px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 10, color: "#e8e8f0", fontSize: 14, cursor: "pointer", outline: "none", appearance: "none", fontFamily: "'DM Sans', sans-serif" }}>
-              {COUNTRIES.map(c => <option key={c.code} value={c.code} style={{ background: "#1a1a2e" }}>{c.flag} {c.name}</option>)}
-            </select>
-            <span style={{ position: "absolute", right: 10, top: "50%", transform: "translateY(-50%)", pointerEvents: "none", color: "#6b7280", fontSize: 12 }}>▾</span>
+            {/* Trigger button */}
+            <div
+              onClick={() => { setDropdownOpen(o => !o); setCountrySearch(""); }}
+              style={{ padding: "10px 36px 10px 14px", background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 10, color: "#e8e8f0", fontSize: 14, cursor: "pointer", minWidth: 210, userSelect: "none", display: "flex", alignItems: "center", gap: 8, position: "relative" }}
+            >
+              <span style={{ fontSize: 18 }}>{selectedC?.flag}</span>
+              <span style={{ flex: 1 }}>{selectedC?.name}</span>
+              <span style={{ position: "absolute", right: 12, color: "#6b7280", fontSize: 11, transition: "transform 0.2s", transform: dropdownOpen ? "rotate(180deg)" : "rotate(0deg)" }}>▾</span>
+            </div>
+
+            {/* Dropdown panel */}
+            {dropdownOpen && (
+              <div style={{ position: "absolute", top: "calc(100% + 6px)", left: 0, zIndex: 1000, background: "#13131f", border: "1px solid rgba(255,255,255,0.12)", borderRadius: 12, width: 270, boxShadow: "0 20px 60px rgba(0,0,0,0.6)", overflow: "hidden" }}>
+                {/* Search box */}
+                <div style={{ padding: "10px 10px 8px", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 8, background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 8, padding: "7px 10px" }}>
+                    <span style={{ color: "#6b7280", fontSize: 13 }}>🔍</span>
+                    <input
+                      autoFocus
+                      value={countrySearch}
+                      onChange={e => setCountrySearch(e.target.value)}
+                      placeholder="Search country..."
+                      style={{ flex: 1, background: "transparent", border: "none", color: "#e8e8f0", fontSize: 13, outline: "none", fontFamily: "'DM Sans', sans-serif" }}
+                    />
+                    {countrySearch && (
+                      <span onClick={() => setCountrySearch("")} style={{ color: "#6b7280", cursor: "pointer", fontSize: 13, lineHeight: 1 }}>✕</span>
+                    )}
+                  </div>
+                </div>
+                {/* List */}
+                <div style={{ maxHeight: 280, overflowY: "auto" }}>
+                  {filteredCountries.length === 0 ? (
+                    <div style={{ padding: "20px", textAlign: "center", color: "#4b5563", fontSize: 13 }}>No country found</div>
+                  ) : (
+                    filteredCountries.map(c => (
+                      <div
+                        key={c.code}
+                        onClick={() => { setSelectedCountry(c.code); setDropdownOpen(false); setCountrySearch(""); }}
+                        style={{ padding: "9px 14px", cursor: "pointer", display: "flex", alignItems: "center", gap: 10, fontSize: 13, background: selectedCountry === c.code ? "rgba(99,102,241,0.18)" : "transparent", color: selectedCountry === c.code ? "#a5b4fc" : "#e8e8f0", borderLeft: selectedCountry === c.code ? "2px solid #6366f1" : "2px solid transparent", transition: "background 0.12s" }}
+                        onMouseEnter={e => { if (selectedCountry !== c.code) (e.currentTarget as HTMLDivElement).style.background = "rgba(255,255,255,0.04)"; }}
+                        onMouseLeave={e => { if (selectedCountry !== c.code) (e.currentTarget as HTMLDivElement).style.background = "transparent"; }}
+                      >
+                        <span style={{ fontSize: 18, lineHeight: 1 }}>{c.flag}</span>
+                        <span style={{ flex: 1 }}>{c.name}</span>
+                        <span style={{ fontSize: 11, color: "#4b5563" }}>{c.code}</span>
+                        {selectedCountry === c.code && <span style={{ fontSize: 12, color: "#6366f1" }}>✓</span>}
+                      </div>
+                    ))
+                  )}
+                </div>
+                {/* Footer count */}
+                <div style={{ padding: "6px 14px", borderTop: "1px solid rgba(255,255,255,0.06)", fontSize: 11, color: "#4b5563" }}>
+                  {filteredCountries.length} of {COUNTRIES.length} countries
+                </div>
+              </div>
+            )}
+
+            {/* Backdrop to close */}
+            {dropdownOpen && (
+              <div style={{ position: "fixed", inset: 0, zIndex: 999 }} onClick={() => { setDropdownOpen(false); setCountrySearch(""); }} />
+            )}
           </div>
+
+          {/* Job type filters */}
           {(["", "remote", "normal"] as const).map(type => (
             <button key={type} onClick={() => setJobType(type)} style={{ padding: "10px 18px", borderRadius: 10, border: "1px solid", borderColor: jobType === type ? "#6366f1" : "rgba(255,255,255,0.1)", background: jobType === type ? "rgba(99,102,241,0.15)" : "transparent", color: jobType === type ? "#a5b4fc" : "#9ca3af", fontSize: 13, fontWeight: 500, cursor: "pointer" }}>
               {type === "" ? "All Jobs" : type === "remote" ? "🏠 Remote" : "🏢 On-site"}
