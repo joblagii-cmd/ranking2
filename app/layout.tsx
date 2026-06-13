@@ -11,6 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 <meta name="google-site-verification" content="0odExRPDqu8uvUfBMHh6xaNPWeAiqdqLsTcA8blKBU4" />
 <meta name="google-site-verification" content="QBhMTqn2elKzsIUrlhmEsMBxNMXLnrQI6AJKqQ2jDhc" />
       <meta name="google-site-verification" content="aQuEFKzH2R9ngFXKt8-o6dJNsPFq1b90utK4FLT73Bc" />
+      <meta name="google-site-verification" content="Zz-1J-en6fmpFIP_plP_e0T1WNscMwnnTtzt4I5xsqc" />
       <body style={{ margin: 0, padding: 0 }}>{children}</body>
     </html>
   );
