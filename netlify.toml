@@ -4,10 +4,3 @@
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
-
-[functions]
-  included_files = ["app/api/publish/route.ts"]
-
-[[functions]]
-  path = "/api/publish"
-  timeout = 60
